@@ -11,7 +11,7 @@ class ImageGallery extends StatelessWidget {
         title: const Text('Image Gallery'),
       ),
       body: const Center(
-        child: Gallery(), // Replace with your content            
+        child: Gallery(), 
       ),
     );
   }

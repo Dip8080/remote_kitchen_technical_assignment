@@ -1,5 +1,7 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_sizer/flutter_sizer.dart';
+// import 'package:get/get.dart';
+// import 'package:remote_kitchen_technical_assignment/features/fetching_data/data/gallery_controller.dart';
 // import 'package:remote_kitchen_technical_assignment/features/fetching_data/data/getGalleryData.dart';
 // import 'package:remote_kitchen_technical_assignment/features/fetching_data/model/galleryModel.dart';
 
@@ -9,8 +11,10 @@
 //   @override
 //   Widget build(BuildContext context) {
 //     Future<List<GalleryModel>> data = GetGalleryData();
-//     return FutureBuilder(
-//         future: data,
+//     final GalleryController galleryController = Get.put(GalleryController());
+//     final galleryData = galleryController.galleryData.value;
+//     return StreamBuilder(
+//         stream:  galleryData,
 //         builder: (context, snapshot) {
 //           if (snapshot.connectionState == ConnectionState.waiting) {
 //             return const Center(child: CircularProgressIndicator());
@@ -72,6 +76,7 @@ import 'package:get/get.dart';
 import 'package:remote_kitchen_technical_assignment/features/fetching_data/data/gallery_controller.dart';
 import 'package:remote_kitchen_technical_assignment/features/fetching_data/model/galleryModel.dart';
 
+
 class Gallery extends StatelessWidget {
   
   const Gallery({super.key});
@@ -79,14 +84,15 @@ class Gallery extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
   final GalleryController galleryController = Get.put(GalleryController());
-  final galleryData = galleryController.galleryData.value;
+  List<GalleryModel> galleryData = galleryController.galleryData.value;
+  print('this is galery data - ${galleryData.length}');
     return Container(
       child: Obx(() {
         if (galleryController.isLoading.value) {
           return const Center(child: CircularProgressIndicator());
         } else {
           return  ListView.builder(
-               itemCount: galleryController.galleryData.length,
+               itemCount:galleryData.length,
                itemBuilder: (context, index) {
                  return GestureDetector(
                    onTap: () {

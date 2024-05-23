@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:remote_kitchen_technical_assignment/features/Home/presentation/screens/showMessageScreen.dart';
 import 'package:remote_kitchen_technical_assignment/features/counter_getx/presentation/screen/counter.dart';
+import 'package:remote_kitchen_technical_assignment/features/fetching_data/presentation/screen/image_gallery.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -25,10 +26,17 @@ class Home extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Counter()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Counter()));
             },
-            child: Text('Click to Navigate to Counter'),
+            child: Text(' Counter with GetX'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ImageGallery()));
+            },
+            child: Text('Rest API with GetX'),
           ),
         ],
       ),

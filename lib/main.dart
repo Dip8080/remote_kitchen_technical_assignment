@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:remote_kitchen_technical_assignment/features/Home/presentation/screens/Home.dart';
 
 void main() {
@@ -10,7 +11,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return FlutterSizer(builder: (context , orientation , screenType) {
+      return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Remote Kitchen',
       theme: ThemeData(
@@ -19,6 +21,8 @@ class MyApp extends StatelessWidget {
       ),
       home: const Home(),
     );
+    });
+    
   }
 }
 

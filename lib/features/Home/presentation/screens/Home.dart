@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:remote_kitchen_technical_assignment/features/Home/presentation/screens/showMessageScreen.dart';
 import 'package:remote_kitchen_technical_assignment/features/counter_getx/presentation/screen/counter.dart';
 import 'package:remote_kitchen_technical_assignment/features/fetching_data/presentation/screen/image_gallery.dart';
+import 'package:remote_kitchen_technical_assignment/features/weather_api/presentation/screen/weather.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
-
-  @override
-  Widget build(BuildContext context) {
+@override
+ Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Remote Kitchen'),
@@ -37,6 +37,13 @@ class Home extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => ImageGallery()));
             },
             child: Text('Rest API with GetX'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Weather()));
+            },
+            child: Text('weather'),
           ),
         ],
       ),
